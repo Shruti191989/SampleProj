@@ -1,12 +1,12 @@
-<div id="outside">
+
+<div id="outside" style="padding: 3px;">
 <form id="survey-form" action="/my-handling-form-page" method="post">
-  <h1 id="title">Employee info for Back to office Program </h1>
+  <h1 id="title" style="color: rgb(225, 65, 65);">Employee info for Back to office Program </h1>
   <p id="description"><b>Note:</b> Please fill right info about your covid vaccine </p>
-  
   
   <fieldset>
    
-    <legend>Personal Details</legend>
+    <legend style="color: royalblue;"><b>Personal Details</b></legend>
    
     <div>
       <label id="name-label" for="name">Name:</label>
@@ -19,11 +19,11 @@
       <input type="email" required id="email" name="user_email" placeholder="Enter email here">   </div>
     <div>
       <label id="number-label" for="phone">Phone Number:</label>
-      <input type="number" id="number" name="user_name" placeholder="Enter 10 digit number" min="1" max="9">  </div>
+      <input type="text" id="number" name="user_name" placeholder="Enter 10 digit number" min="1" max="9"> 
+      <label style="visibility: hidden;" id="validation-label" >Valid</label>   </div>
     <div>
-      <label id="iq-label" for="iq">Office Location</label>
-      <input type="number" id="iq" name="iq" placeholder="Enter Office Location here">   </div>
-
+      <label id="iq-label" for="iq">Office Location :</label>
+      <input type="text" id="iq" name="iq" placeholder="Enter Office Location here">   </div>
   
     <div>
       <label for="Gender">Gender</label>
@@ -48,7 +48,7 @@
   </fieldset>
  
   <fieldset>
-    <label for="Gender">Covid Vaccine</label>
+    <label for="Gender" style="color: royalblue;"><b>Covid Vaccine</b></label>
     <p>
       <input type="checkbox" name="Dose 1" value="Dose 1"> I have taken Dose 1<br>
       <input type="checkbox" name="Dose 2" value="Dose 2"> I have taken Dose 2<br>
@@ -57,7 +57,7 @@
     </p>
   </fieldset>
    <fieldset>
-    <legend>Essay Section</legend>
+    <legend style="color: royalblue;"><b>Essay Section</b></legend>
     <div>
       <label for="msg"></label>
       <p> Please comment your views about start to work from office</p>
@@ -67,8 +67,26 @@
   </fieldset>
 
   <div id="submitbutton">
-    <button type="submit" id="submit">Send your application</button>   </div>
+    <button type="submit" onclick="validation()" id="submit">Send your application</button>   </div>
 
 </form>
   </div>
+  <script type="text/javascript">
+    function validation(){
+     var emVal = document.getElementById("email-label");
+     var mbVal = document.getElementById("number");
+     var mbRegx = /^[6-9][0-9]{9}$/; 
+      if(mbRegx.test(mbVal.value)){
+        document.getElementById("validation-label").innerHTML="Valid";
+        document.getElementById("validation-label").style.visibility="visible";
+        document.getElementById("validation-label").style.color="green";
+      }
+      else{
+        document.getElementById("validation-label").innerHTML="Invalid";
+        document.getElementById("validation-label").style.visibility="visible";
+        document.getElementById("validation-label").style.color="red";
+      } 
+    
+    }
+  </script>
 
